@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Common Diseases - GreenGLOW</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='common_diseases.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+</head>
+
+
+<body class="body-black">
+
+    <style>
+        body {
+            background-image: url(bg3.webp);
+            background-color: rgba(0, 3, 0, 0.83);
+        }
+    </style>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="GreenGlow Logo" />
+            </a>
+        </div>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('indoor_plants') }}">Indoor Plants</a></li>
+                <li><a href="{{ url_for('garden_plants') }}">Garden Plants</a></li>
+                <li><a href="{{ url_for('common_diseases') }}" class="active">Common Diseases</a></li>
+                <li><a href="{{ url_for('about_us') }}">Meet Us</a></li>
+    </header>
+
+
+    <div class="page-full-bg" style="position: relative;">
+        <div class="background-overlay"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); z-index: 1;">
+        </div>
+        <main class="content-wrapper"
+            style="position: relative; z-index: 2; display: flex; justify-content: center; align-items: center; min-height: 100vh; flex-direction: column;">
+            <h1 class="page-title"
+                style="color: white; font-size: 3em; margin-bottom: 30px;margin-top: 80px; text-align: center;">Common
+                Diseases</h1>
+
+            <section class="disease-page">
+
+
+                <section class="disease-page">
+                    <article class="card" data-id="1">
+                        <h2>Powdery Mildew</h2>
+                        <img src="https://imgs.search.brave.com/5jtE2RaB49sHSr3PeWB_hKTxchuVLpQY5YdAepemRr4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cmhzLm9yZy51ay9n/ZXRtZWRpYS9lNjg0/ZWU2Yi04N2RhLTQz/ZTEtYWNjMi1kNmQ3/MzZkZGQxYTcvQ3Vj/dXJiaXQtcG93ZGVy/eS1taWxkZXctMS5q/cGc_d2lkdGg9NzA1/JmhlaWdodD05NDAm/ZXh0PS5qcGc_d2lk/dGg9NzAw"
+                            alt="Powdery Mildew" />
+                        <p class="cause"><b>Cause</b>: Fungal spores thriving in dry, warm environments.</p>
+                        <p class="symptoms"><b>Symptoms</b>: White, powdery spots on leaves, stems, and buds.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Improve air circulation.</li>
+                            <li>Spray neem oil or sulfur-based fungicide.</li>
+                            <li>Remove affected leaves.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="2">
+                        <h2>Root Rot</h2>
+                        <img src="https://imgs.search.brave.com/sXdEKcHhMOtw9vB-RAbwlTWkpj3AuW6p0qgD3gvk6s4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/b3VyaG91c2VwbGFu/dHMuY29tL2ltZ3Mt/Y29udGVudC9yb3R0/ZW4tcm9vdHMuanBn"
+                            alt="Root Rot" />
+                        <p class="cause"><b>Cause</b>: Overwatering and poorly drained soil.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Yellowing leaves, mushy and blackened roots.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Remove affected roots.</li>
+                            <li>Repot with fresh, well-draining soil.</li>
+                            <li>Reduce watering frequency.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="3">
+                        <h2>Leaf Spot</h2>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxcBXZ5i_a_5_e-QxOXvlxnFlSG6LgGOKz7w&s"
+                            alt="Leaf Spot" />
+                        <p class="cause"><b>Cause</b>: Fungi (like Cercospora) or bacteria.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Brown, black, or yellow spots on leaves, sometimes with a
+                            yellow halo.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Remove infected leaves.</li>
+                            <li>Apply copper-based fungicides.</li>
+                            <li>Water the base of the plant, not the leaves.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="4">
+                        <h2>Rust</h2>
+                        <img src="https://imgs.search.brave.com/S3ScmW35L0PW0p4I0wilhiNMVBIuM295Dnc9vqFGbsY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z2FyZGVudGVjaC5j/b20vLS9tZWRpYS9w/cm9qZWN0L29uZXdl/Yi9nYXJkZW50ZWNo/L2ltYWdlcy9wZXN0/LWlkL3BsYW50LXBl/c3QvcnVzdC9wbGFu/dC13aXRoLWhvbGx5/aG9jay1ydXN0Lmpw/Zw"
+                            alt="Rust" />
+                        <p class="cause"><b>Cause</b>: Fungal infection under humid conditions.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Orange, yellow, or brown pustules under leaves.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Remove and destroy infected leaves.</li>
+                            <li>Use sulfur or copper fungicides.</li>
+                            <li>Provide better air circulation.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="5">
+                        <h2>Botrytis (Gray Mold)</h2>
+                        <img src="https://imgs.search.brave.com/n4pw_yXh2-84RZovMl-kpyDfqRmVpObGLLf50-Fpi0Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z2FyZGVuZGVzaWdu/LmNvbS9waWN0dXJl/cy9pbWFnZXMvNDAw/eDMyMEV4YWN0XzEw/MHgwL3NpdGVfMy9i/b3RyeXRpcy1ibGln/aHQtb24tc3RyYXdi/ZXJyaWVzLXNodXR0/ZXJzdG9jay1jb21f/MTgyODAuanBn"
+                            alt="Botrytis" />
+                        <p class="cause"><b>Cause</b>: Fungus thriving on dead/dying tissues.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Gray fuzzy mold on flowers, leaves, and stems.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Remove affected parts immediately.</li>
+                            <li>Reduce humidity around plants.</li>
+                            <li>Apply fungicide treatments.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="6">
+                        <h2>Downy Mildew</h2>
+                        <img src="https://imgs.search.brave.com/7Oi_Mpj94h3ydQbo4r_mMxJ_bYzzlVHX0x4d752oYbo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA4LzkzLzM2LzU2/LzM2MF9GXzg5MzM2/NTY0Ml9BbkFxM0pk/a0RxeXVsSDVtN0Uw/ejRvcFBmTGY0eTlJ/Ry5qcGc"
+                            alt="Downy Mildew" />
+                        <p class="cause"><b>Cause</b>: Water molds attacking under humid, cool conditions.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Yellow patches on upper leaf surfaces, gray fuzz
+                            underneath.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Improve ventilation and drainage.</li>
+                            <li>Use phosphonate fungicides.</li>
+                            <li>Remove and destroy affected leaves.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="7">
+                        <h2>Anthracnose</h2>
+                        <img src="https://imgs.search.brave.com/xXwKtFSUMZ6Hx5os2iYP9IOZEROXDSn4amnQsq46HaQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9leHRl/bnNpb24ucHN1LmVk/dS9tZWRpYS93eXNp/d3lnLy9leHRlbnNp/b25zL2NhdGFsb2df/cHJvZHVjdC9mMTJh/NjFmZmY3ZDc0ZGQ1/ODgwM2FiMmM3Njkw/MmMwNS9hL24vYW50/aHJhY25vc2Utb24t/c2hhZGUtdHJlZXMz/LWpwZy5qcGc"
+                            alt="Anthracnose" />
+                        <p class="cause"><b>Cause</b>: Fungal pathogens (e.g., Colletotrichum).</p>
+                        <p class="symptoms"><b>Symptoms</b>: Dark, sunken lesions on leaves, stems, fruits.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Prune infected parts.</li>
+                            <li>Apply systemic fungicides.</li>
+                            <li>Avoid overhead watering.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="8">
+                        <h2>Fusarium Wilt</h2>
+                        <img src="https://imgs.search.brave.com/ZT2bawLb80JDXZfwunDX-Sv7ZCSbh9rLc4xUakt6Unw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy81/LzU0L0Z1c2FyaXVt/X3dpbHRfc3ltcHRv/bV90b2JhY2NvLmpw/Zw"
+                            alt="Fusarium Wilt" />
+                        <p class="cause"><b>Cause</b>: Soil-borne fungus blocking water transport.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Yellowing, wilting, and eventual death of plant.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Use disease-resistant plant varieties.</li>
+                            <li>Improve soil drainage.</li>
+                            <li>Remove and destroy affected plants.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="9">
+                        <h2>Bacterial Blight</h2>
+                        <img src="https://imgs.search.brave.com/iWf_yNvR9rsgUkzhy2sDjl2UncWRtv8610uQWrwybUI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y290dG9uaW5jLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAx/OC8wMS9UYXR0ZXJl/ZC1hcHBlYXJhbmNl/LW9mLWluZmVjdGVk/LWxlYWYtZTE1MTY3/MzE5MjA4NzQucG5n"
+                            alt="Bacterial Blight" />
+                        <p class="cause"><b>Cause</b>: Water-splashed bacteria entering wounds.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Water-soaked lesions that turn brown and dry out.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Remove affected plant parts.</li>
+                            <li>Apply bactericides containing copper.</li>
+                            <li>Avoid overhead irrigation.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="10">
+                        <h2>Mosaic Virus</h2>
+                        <img src="https://imgs.search.brave.com/tWVkn5tn6s45mkK1mMPoM43fdLmMzHAccIw7tAEBhFg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cGxhbmV0bmF0dXJh/bC5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjEvMTEvUm9z/ZS1Nb3NhaWMtVmly/dXMtNzY4eDEwMjQu/anBn"
+                            alt="Mosaic Virus" />
+                        <p class="cause"><b>Cause</b>: Viral infection often spread by insects (like aphids).</p>
+                        <p class="symptoms"><b>Symptoms</b>: Mottled patterns of light and dark green on leaves, stunted
+                            growth.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Remove and destroy infected plants.</li>
+                            <li>Control insect vectors.</li>
+                            <li>Use virus-free seeds and plants.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="11">
+                        <h2>Edema</h2>
+                        <img src="https://imgs.search.brave.com/_7q-ksWh9IBMmZlLpVkmfv1Q8q5w2y03JOQDF3na10E/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bW9zLmNtcy5mdXR1/cmVjZG4ubmV0L1My/MzVMa2E2YlVuR2hE/VjVqQnY4S0QuanBn"
+                            alt="Edema" />
+                        <p class="cause"><b>Cause</b>: Overabsorption of water causing cell rupture.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Blisters, corky growths, or wart-like bumps on leaves.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Improve air circulation and light.</li>
+                            <li>Water plants less frequently.</li>
+                            <li>Ensure proper drainage.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="12">
+                        <h2>Black Spot</h2>
+                        <img src="https://imgs.search.brave.com/Ey3I90XQL9jRXKB03QEnT7azfD6DjGJihopxfR8qui8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z2FyZGVudGVjaC5j/b20vLS9tZWRpYS9w/cm9qZWN0L29uZXdl/Yi9nYXJkZW50ZWNo/L2ltYWdlcy9wZXN0/LWlkL3BsYW50LXBl/c3QvYmxhY2stc3Bv/dC9jbG9zZS11cC1v/Zi1ibGFjay1zcG90/LmpwZw"
+                            alt="Black Spot" />
+                        <p class="cause"><b>Cause</b>: Fungal infection (Diplocarpon rosae) in humid environments.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Black, round spots with yellow halos on leaves.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Remove affected leaves.</li>
+                            <li>Use fungicides like chlorothalonil.</li>
+                            <li>Keep foliage dry and clean.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="13">
+                        <h2>Scorching</h2>
+                        <img src="https://imgs.search.brave.com/6NJ8I7eMDh9Qz3fhTjuuD-1NE9iHpsUk9OEm_YQbUuM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9leHRl/bnNpb24ud3Z1LmVk/dS9maWxlcy8wOTVj/N2I5OC1mNjU2LTQ5/ZTktYjRkMy0wZTlm/MzE2Yzk5OTMvNDAw/eDMwMD9jYj04MDY4/ZDljZWQ3YzIwZmJi/ZmJkMWUzZjY2OGMw/NzVlNw"
+                            alt="Scorching" />
+                        <p class="cause"><b>Cause</b>: Excessive heat, drought, salt, or wind damage.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Browning of leaf edges and tips.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Provide sufficient water (especially during dry periods).</li>
+                            <li>Use mulch to retain soil moisture.</li>
+                            <li>Offer partial shade during peak heat.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="14">
+                        <h2>Crown Rot</h2>
+                        <img src="https://imgs.search.brave.com/Vhcha4aMYZRooc61_lPFjxTDIykVfzW3jvTi8cnBFSs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9vcmNo/aWRibGlzcy5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMTcv/MDIvY3Jvd24tcm90/LXdhdGVyZWQtd2l0/aC1vcmNoaWQtNjIw/eDkzMC5wbmc"
+                            alt="Crown Rot" />
+                        <p class="cause"><b>Cause</b>: Fungal attack at the plant base, mostly by Phytophthora.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Wilting, yellowing, and plant collapse at soil level.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Improve soil drainage immediately.</li>
+                            <li>Avoid watering the crown area directly.</li>
+                            <li>Use fungicidal drenches.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="15">
+                        <h2>Verticillium Wilt</h2>
+                        <img src="https://imgs.search.brave.com/KfYKz8t14ldS0GpDLr-TntvxsL9B8Mom0_6UlXreqeY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z2FyZGVuaWEubmV0/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDIz/LzA1L3ZlcnRpY2ls/bGl1bS13aWx0LTc4/MHg1MjAud2VicA"
+                            alt="Verticillium Wilt" />
+                        <p class="cause"><b>Cause</b>: Soil-borne fungus invading roots and blocking water transport.
+                        </p>
+                        <p class="symptoms"><b>Symptoms</b>: Yellowing between veins, wilting, and stunted growth.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Remove infected plants.</li>
+                            <li>Use resistant plant varieties.</li>
+                            <li>Solarize soil to kill pathogens.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="16">
+                        <h2>Sooty Mold</h2>
+                        <img src="https://imgs.search.brave.com/tWpAY_BT5REwApFI90Tx-MSTMl4ioHjZglDgG8PoaIc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/c29vdHktbW9sZC1v/bi1teS1tZXllci1s/ZW1vbi10cmVlLXBs/ZWFzZS1oZWxwLXYw/LTk5NWYybTViczhr/YzEuanBlZz93aWR0/aD02NDAmY3JvcD1z/bWFydCZhdXRvPXdl/YnAmcz1lNzE5Y2U1/MjVhODUzYWVlNDkz/MzU3MjIwNjY4NWY1/YzIzOTkxN2E5"
+                            alt="Sooty Mold" />
+                        <p class="cause"><b>Cause</b>: Fungal growth on honeydew secreted by insects like aphids or
+                            scale.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Black, soot-like coating on leaves and stems.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Control insect pests first (aphids, whiteflies).</li>
+                            <li>Wash off the mold with water and mild soap.</li>
+                            <li>Use horticultural oils if severe.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="17">
+                        <h2>Blight</h2>
+                        <img src="https://imgs.search.brave.com/xKSWgSogMqPSwauBU-oD6BAgWjGiWsD8DPlCEs7TgyA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cmhzLm9yZy51ay9n/ZXRtZWRpYS84ZDdm/ZjAwNy0wY2MyLTQ1/MDUtODViMy0zNTZj/YTRlY2Q1ZmIvUG90/YXRvLWJsaWdodC1k/b3VibGUtbGVhZi1s/ZXNpb24uanBnP3dp/ZHRoPTk0MCZoZWln/aHQ9NjYyJmV4dD0u/anBnP3dpZHRoPTcw/MA"
+                            alt="Blight" />
+                        <p class="cause"><b>Cause</b>: Fungi or bacteria under wet conditions.</p>
+                        <p class="symptoms"><b>Symptoms</b>: Rapid browning and death of leaves, flowers, and shoots.
+                        </p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Prune and destroy infected parts immediately.</li>
+                            <li>Apply fungicides early if weather is wet.</li>
+                            <li>Improve spacing for better air flow.</li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-id="18">
+                        <h2>Clubroot</h2>
+                        <img src="https://imgs.search.brave.com/rGsBPC3KXa3jxTkmuo41cbnLhDpK3ePWva-BMrbxQQw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9leHRl/bnNpb24udW1uLmVk/dS9zaXRlcy9leHRl/bnNpb24udW1uLmVk/dS9maWxlcy9zdHls/ZXMvY2FwdGlvbl9t/ZWRpdW0vcHVibGlj/L2NsdWJyb290Lmpw/Zz9pdG9rPWJMcFZY/UDhN"
+                            alt="Clubroot" />
+                        <p class="cause"><b>Cause</b>: Soil-borne pathogen (Plasmodiophora brassicae).</p>
+                        <p class="symptoms"><b>Symptoms</b>: Swollen, distorted roots; wilting during heat; stunted
+                            growth.</p>
+                        <h3 class="cure">Cure:</h3>
+                        <ul>
+                            <li>Raise soil pH with lime (make it less acidic).</li>
+                            <li>Rotate crops and avoid planting susceptible crops repeatedly.</li>
+                            <li>Use resistant plant varieties.</li>
+                        </ul>
+                    </article>
+
+                </section>
+
+
+
+            </section>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

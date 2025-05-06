@@ -1,0 +1,386 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    /* Modern clean font */
+}
+
+/* Body and Background */
+body {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 16px;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Background overlay */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    /* Adjust the darkness by changing 0.7 */
+    z-index: -1;
+    /* Make sure it's behind the content */
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Darker transparent background */
+    padding: 20px 30px;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    /* Glassmorphism effect */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+}
+
+.navbar .logo img {
+    width: 140px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar .logo img:hover {
+    transform: scale(1.1);
+    /* Hover effect to add interaction */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #4caf50;
+    /* Light green hover color */
+}
+
+/* Banner Section */
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 100px;
+    z-index: 1;
+}
+
+/* Wrapper for Upload & About Us Sections */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin: 0 auto;
+    padding: 50px 0;
+    width: 75%;
+    /* Balanced width */
+    flex-wrap: wrap;
+}
+
+/* Upload Section */
+.upload-section {
+    margin-top: 160px;
+    width: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Darker background for the upload card */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    backdrop-filter: blur(20px);
+    /* Glassmorphism effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-section:hover {
+    transform: translateY(-5px);
+    /* Slight hover lift */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    /* Enhance shadow on hover */
+}
+
+.upload-section h1 {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+/* File Upload */
+#file-upload {
+    padding: 12px;
+    border: 2px solid #4caf50;
+    border-radius: 30px;
+    background: transparent;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#file-upload:hover {
+    background-color: #4caf50;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Button */
+.detect-btn {
+    background: #4caf50;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.detect-btn:hover {
+    background: #45a049;
+    transform: translateY(-3px);
+    /* Lift effect on hover */
+}
+
+/* About Us Section */
+.about-container {
+    width: 45%;
+    background: rgba(255, 255, 255, 0.1);
+    /* Lighter background */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+    margin-top: 150px;
+    /* Added spacing from navbar */
+}
+
+/* Floating Circle for Dynamic Effect */
+.about-container::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: -20%;
+    width: 200px;
+    height: 200px;
+    background: rgba(76, 175, 80, 0.3);
+    /* Light green circle */
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    /* Floating animation */
+    z-index: -1;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(20px, -20px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.about-title {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.about-box {
+    background: rgba(0, 100, 0, 0.7);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+
+    /* Stack upload and about sections vertically */
+    .content-wrapper {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .upload-section,
+    .about-container {
+        width: 90%;
+    }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    .search-bar {
+        width: 100%;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Stack upload and about sections vertically */
+    .content-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .upload-section,
+    .about-container {
+        width: 100%;
+        margin-top: 0;
+
+        /* Page content background with black tint */
+        .page-content-bg {
+            background-color: rgba(0, 3, 0, 0.9);
+            padding: 40px 20px;
+            border-radius: 10px;
+            max-width: 1200px;
+            margin: 0 auto 40px auto;
+            color: white;
+        }
+
+        /* Full page black tint background below navbar */
+        .page-full-bg {
+            background-color: rgba(0, 3, 0, 0.9);
+            min-height: calc(100vh - 80px);
+            padding: 20px 0;
+            color: white;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+
+    /* Navbar menu stack vertically */
+    header.navbar nav ul {
+        flex-direction: column !important;
+        gap: 15px !important;
+        align-items: center !important;
+        padding-top: 10px !important;
+    }
+
+    header.navbar {
+        flex-direction: column !important;
+        height: auto !important;
+        padding: 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Allow vertical scrolling on mobile */
+    body {
+        overflow-y: auto !important;
+    }
+
+    /* Adjust banner height and padding to offset fixed navbar */
+    .banner {
+        height: auto !important;
+        min-height: calc(100vh - 80px);
+        padding-top: 300px;
+    }
+
+    /* Remove upload section margin on mobile */
+    .upload-section {
+        margin-top: 0 !important;
+    }
+
+    /* Stack upload and about sections vertically */
+    .content-wrapper {
+        flex-direction: column;
+        gap: 25px;
+        width: 100%;
+        padding: 0 10px;
+        padding-top: 0;
+    }
+
+    .upload-section,
+    .about-container {
+        width: 100%;
+        margin-top: 0;
+        padding: 20px;
+    }
+
+    .upload-section h1,
+    .about-title {
+        font-size: 1.8em;
+    }
+
+    .upload-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .detect-btn {
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    #file-upload {
+        width: 100%;
+    }
+}

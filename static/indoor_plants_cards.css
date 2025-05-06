@@ -1,0 +1,149 @@
+/* General Card Styles */
+/* Glassmorphism effect for cards */
+.card {
+    background: rgba(36, 81, 38, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    width: 300px;
+    padding: 20px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+/* Hover Effect */
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Clickable effect */
+.card .clickable-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.card.clicked .clickable-effect {
+    opacity: 1;
+}
+
+/* Image Styling */
+.card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Title styling */
+.card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #d4edc9;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+/* Paragraph Styling */
+.card p {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    color: #e0f2e9;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Subheading Styling */
+.card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #a8d5ba;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* List styling */
+.card ul {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    color: #cde7d8;
+    padding-left: 20px;
+}
+
+.card ul li {
+    margin-bottom: 8px;
+}
+
+/* Responsive Styles for indoor_plants.html */
+
+/* Content wrapper styles for smaller screens */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+}
+
+/* Ensure content starts below navbar on mobile screens */
+@media (max-width: 600px) {
+    .content-wrapper {
+        padding-top: 140px !important;
+    }
+
+
+    .content-wrapper h1 {
+        margin-top: 140px !important;
+    }
+
+    /* Make cards full width on small screens */
+    .card {
+        width: 90% !important;
+        max-width: none !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Adjust font sizes for readability */
+    .card h2 {
+        font-size: 1.5em !important;
+    }
+
+    .card p,
+    .card ul {
+        font-size: 1em !important;
+    }
+
+    /* Navbar adjustments for mobile */
+    header.navbar nav ul {
+        flex-direction: column !important;
+        gap: 15px !important;
+        align-items: center !important;
+        padding-top: 10px !important;
+    }
+
+    header.navbar {
+        flex-direction: column !important;
+        height: auto !important;
+        padding: 5px !important;
+    }
+}

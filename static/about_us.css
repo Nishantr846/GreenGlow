@@ -1,0 +1,412 @@
+/* ===========================
+   General Reset and Base Styles
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* ===========================
+   Background and Container Setup
+   =========================== */
+.page-full-bg {
+    background-size: cover;
+    color: white;
+}
+
+/* Glassmorphism effect for main container */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===========================
+   Developer Section Styles
+   =========================== */
+.developer-section {
+    position: relative;
+    background: url('bg3.webp') no-repeat center center/cover;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    padding-top: 80px;
+    /* Ensure content starts after navbar */
+}
+
+/* Glassmorphism overlay effect */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+/* Content wrapper inside developer section */
+.developer-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 50px 20px;
+}
+
+/* ===========================
+   Cards Container and Card Styles
+   =========================== */
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    /* Stack vertically by default */
+    align-items: center;
+    gap: 50px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* General card styling */
+.card {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 1000px;
+    justify-content: center;
+    animation: cardFloat 6s ease-in-out infinite;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    /* Glassmorphism effect */
+}
+
+/* First card layout: image right, text left */
+.card-right {
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+/* Second card layout: image left, text right */
+.card-left {
+    flex-direction: row;
+    animation-delay: 3s;
+}
+
+.card-left p,
+.card-left h2,
+.card-left a {
+    margin-left: 10px;
+}
+
+/* Image container styling */
+.card-img {
+    flex: 0 0 auto;
+    margin-right: 30px;
+    /* Margin right for first card */
+}
+
+.card-left .card-img {
+    margin-left: 30px;
+    /* Margin left for second card */
+}
+
+/* Developer image styling */
+.card-img img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #00b780;
+    box-shadow:
+        0 0 10px #00b780,
+        0 0 20px #00b780,
+        0 0 30px #00b780,
+        0 0 40px #00b780;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Hover effect on developer images */
+.card-img img:hover {
+    transform: scale(1.1);
+    box-shadow:
+        0 0 20px #a2ffe6,
+        0 0 40px #00ffbb,
+        0 0 60px #00ffbb,
+        0 0 80px #00ffbb;
+}
+
+/* Card text content */
+.card-content {
+    flex: 1;
+}
+
+.card-content h2 {
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 0 0 5px #00ffbb, 0 0 10px #00ffbb;
+}
+
+.card-content p {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* ===========================
+   Card Buttons Styling
+   =========================== */
+.card-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 128, 0.3);
+}
+
+.btn i {
+    font-size: 18px;
+}
+
+.btn.linkedin {
+    background: rgba(10, 102, 194, 0.15);
+    border: 1px solid rgba(10, 102, 194, 0.5);
+    box-shadow: 0 0 10px rgba(10, 102, 194, 0.3);
+}
+
+.btn.email {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    background: rgba(0, 255, 128, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 128, 0.6);
+}
+
+.btn.linkedin:hover {
+    background: rgba(10, 102, 194, 0.25);
+    box-shadow: 0 0 20px rgba(10, 102, 194, 0.7);
+}
+
+.btn.email:hover {
+    background: rgba(255, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+/* ===========================
+   Floating Background Bubbles
+   =========================== */
+.floating-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    /* So clicks go through */
+}
+
+.floating-background .bubble {
+    position: absolute;
+    bottom: -150px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 183, 128, 0.3);
+    border-radius: 50%;
+    animation: floatUp calc(10s * var(--i)) linear infinite;
+    filter: blur(4px);
+}
+
+/* Animation for floating bubbles */
+@keyframes floatUp {
+    0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(30px) translateY(-50vh);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(-30px) translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+/* ===========================
+   Card Floating Animation
+   =========================== */
+@keyframes cardFloat {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* ===========================
+   Responsive Styles for about_us.html
+   =========================== */
+
+/* Mobile screens (max-width: 600px) */
+@media (max-width: 600px) {
+    .developer-section {
+        padding-top: 180px !important;
+        /* Increased padding to avoid navbar overlap */
+    }
+
+    .cards-container {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .card {
+        flex-direction: column !important;
+        max-width: 90%;
+        padding: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        animation: none;
+    }
+
+    .card-img {
+        margin: 0 0 15px 0 !important;
+        display: flex;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+    }
+
+    .card-img img {
+        width: 150px !important;
+        height: 150px !important;
+        border-radius: 50%;
+        box-shadow:
+            0 0 10px #00b780,
+            0 0 20px #00b780,
+            0 0 30px #00b780,
+            0 0 40px #00b780;
+    }
+
+    .card-content {
+        text-align: center;
+    }
+
+    .card-content h2 {
+        font-size: 24px;
+    }
+
+    .card-content p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .card-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+/* iPad screens (max-width: 1024px) and above mobile */
+@media (max-width: 1024px) and (min-width: 601px) {
+    .cards-container {
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .card {
+        flex-direction: row !important;
+        max-width: 700px;
+        padding: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    .card-img {
+        margin: 0 25px 0 0 !important;
+        width: 180px;
+        height: 180px;
+    }
+
+    .card-img img {
+        width: 180px !important;
+        height: 180px !important;
+    }
+
+    .card-content {
+        text-align: left;
+    }
+
+    .card-content h2 {
+        font-size: 26px;
+    }
+
+    .card-content p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .card-buttons {
+        justify-content: flex-start;
+        gap: 20px;
+    }
+}

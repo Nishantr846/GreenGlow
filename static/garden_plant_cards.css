@@ -1,0 +1,274 @@
+/* Card Styling */
+.card {
+    display: flex;
+    background: rgba(36, 81, 38, 0.75);
+    border-radius: 20px;
+    box-shadow: rgba(241, 238, 238, 0.4) 0px 30px 90px;
+    overflow: hidden;
+    width: 45%;
+    max-width: 90%;
+    margin: 20px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+/* Card Image */
+.card img {
+    width: 200px;
+    object-fit: cover;
+    border-radius: 20px 0 0 20px;
+}
+
+/* Card Content */
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Title Styling */
+.card-content h2 {
+    font-size: 2em;
+    margin: 0 0 10px;
+    font-family: 'Poppins', sans-serif;
+    color: #d4edc9;
+}
+
+/* Care Tips */
+.card-content p {
+    margin: 0 0 20px;
+    font-size: 1.1em;
+    color: #d4edc9;
+    font-family: 'Times New Roman', Times, serif
+}
+
+.care-tips h3 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #d4edc9;
+}
+
+.care-tips ul {
+    color: #d4edc9;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+/* Card Hover Styling */
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Overlay for darkening the background */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.877);
+    /* Darkened background */
+    display: none;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* The enlarged and centered card */
+.card.open {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.3);
+    /* Smooth scaling effect */
+    z-index: 1000;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    /* Subtle glow */
+    width: 60%;
+    /* Increase width to make it larger */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.card.open img {
+    width: 250px;
+    /* Enlarge image when card is open */
+}
+
+.card.open .card-content {
+    padding: 30px;
+    /* Add some padding when enlarged */
+    font-size: 1.2em;
+    /* Adjust content size */
+}
+
+/* Close button styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Close button hover effect */
+.close-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    /* Slight scale effect on hover */
+}
+
+/* Smooth fade-in and fade-out effect for overlay */
+.overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Apply blur effect to the background when the card is open */
+.body-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    /* Apply blur effect */
+    z-index: 998;
+    display: block;
+    opacity: 0.7;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Dropdown Menu */
+/* Wrapper to keep label and select inline */
+.dropdown-inline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    color: #d4edc9;
+    /* Light green, matches your aesthetic */
+}
+
+/* Modern, sleek select box */
+.plant-dropdown {
+    appearance: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #d4edc9;
+    border: 2px solid #66bb6a;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    box-shadow: 0 2px 6px rgba(36, 81, 38, 0.3);
+    outline: none;
+    transition: all 0.3s ease;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="14" height="10" viewBox="0 0 24 24" fill="none" stroke="%2366bb6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 30px;
+    margin-top: 30px;
+    /* space for arrow */
+    min-width: 180px;
+}
+
+/* Hover and focus effect */
+.plant-dropdown:hover,
+.plant-dropdown:focus {
+    background-color: rgba(8, 51, 24, 0.748);
+    border-color: #81c784;
+    box-shadow: 0 0 8px #81c784(129, 199, 132, 0.6);
+}
+
+/* Arrow rotation on focus */
+.plant-dropdown:focus {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="14" height="10" viewBox="0 0 24 24" fill="none" stroke="%2381c784" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>');
+}
+
+/* Responsive Styles for garden_plants.html */
+
+/* Content wrapper styles for smaller screens */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+}
+
+/* Ensure content starts below navbar on mobile screens */
+@media (max-width: 600px) {
+    .content-wrapper {
+        padding-top: 140px !important;
+    }
+
+    .content-wrapper h1 {
+        margin-top: 140px !important;
+    }
+
+    /* Make cards slightly less wide on small screens to avoid horizontal scroll */
+    .card {
+        width: 85% !important;
+        max-width: none !important;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column !important;
+    }
+
+    .card img {
+        width: 100% !important;
+        border-radius: 20px 20px 0 0 !important;
+    }
+
+    /* Adjust font sizes for readability */
+    .card-content h2 {
+        font-size: 1.5em !important;
+    }
+
+    .card-content p,
+    .care-tips ul {
+        font-size: 1em !important;
+    }
+
+    /* Navbar adjustments for mobile */
+    header.navbar nav ul {
+        flex-direction: column !important;
+        gap: 15px !important;
+        align-items: center !important;
+        padding-top: 10px !important;
+    }
+
+    header.navbar {
+        flex-direction: column !important;
+        height: auto !important;
+        padding: 20px !important;
+    }
+}
+
+/* Add padding to page-full-bg to start content below fixed navbar on mobile screens only */
+@media (max-width: 600px) {
+    .page-full-bg {
+        padding-top: 240px !important;
+    }
+}
