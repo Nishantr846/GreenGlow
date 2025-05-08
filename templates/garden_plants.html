@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Plants - GreenGLOW</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='garden_plant_cards.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+
+<style>
+    body {
+        background-image: url("{{ url_for('static', filename='bg3.webp') }}");
+        background-color: rgba(0, 3, 0, 0.83);
+    }
+
+
+    /* Styling for wrapping the cards in a grid */
+    .card-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+</style>
+<header class="navbar">
+    <div class="logo">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="GreenGlow Logo" />
+        </a>
+    </div>
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search...">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('indoor_plants') }}">Indoor Plants</a></li>
+            <li><a href="{{ url_for('garden_plants') }}" class="active">Garden Plants</a></li>
+            <li><a href="{{ url_for('common_diseases') }}">Common Diseases</a></li>
+            <li><a href="{{ url_for('about_us') }}">Meet Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="background-overlay"
+    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); z-index: 0;">
+</div>
+
+<div class="page-full-bg" style="position: relative; z-index: 10;">
+
+    <div class="dropdown-inline" style="position: relative; z-index: 3;">
+        <label for="plant-type-select">Choose Plant Type:</label>
+        <select id="plant-type-select" class="plant-dropdown">
+            <option value="floral">Floral Plants</option>
+            <option value="kitchen">Kitchen Plants</option>
+        </select>
+    </div>
+
+
+
+    <div id="floral-plants-section" class="plant-section">
+        <h1 style="color: white; font-size: 3em; margin-bottom: 30px; margin-top: 20px; text-align: center;">Floral
+            Plants</h1>
+
+        <main>
+
+            <div class="card-wrapper">
+                <div class="card" data-id="card1">
+                    <img src="https://imgs.search.brave.com/2SLCSlFxkhriji0-CzSuqA6YUQXwspuppwD_RuIIUUU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAxLzQzLzE1LzEw/LzM2MF9GXzE0MzE1/MTA2NV83VU5QVXFS/MFQ2UjdnR3RHSlUz/c0RGRjdYSGNkbXQy/ay5qcGc"
+                        alt="Rose" />
+                    <div class="card-content">
+                        <h2>Rose (Rosa)</h2>
+                        <p>Roses are one of the most popular garden flowers known for their vibrant colors and
+                            lovely
+                            fragrance.
+                            They come in various varieties, including hybrid tea roses, climbing roses, and
+                            floribundas.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Requires well-drained soil.</li>
+                                <li>Needs plenty of sunlight (at least 6 hours a day).</li>
+                                <li>Prune regularly to remove dead or damaged branches.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card" data-id="card2">
+                    <img src="https://imgs.search.brave.com/XlLg5PmNMsvi9YB5Mraj-o1Rc4qt5Pb65I6jAYsJv08/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9lYWRu/LXdjMDUtMTI0NzA1/OTkubnhlZGdlLmlv/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDIz/LzExL2Jsb29tLWlu/Zm8tdHVsaXBzLndl/YnA"
+                        alt="Tulip" />
+                    <div class="card-content">
+                        <h2>Tulip (Tulipa)</h2>
+                        <p>Tulips are spring-blooming flowers that come in a variety of colors such as red,
+                            pink,
+                            yellow,
+                            and
+                            purple. They are known for their elegant shape and vibrant petals.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Plant bulbs in fall, about 6 to 8 inches deep.</li>
+                                <li>Requires full sun for optimal growth.</li>
+                                <li>Water when the soil feels dry.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card3">
+
+                    <img src="https://imgs.search.brave.com/1qjzLWq4so8CBVjzAwCIrrXyujvMRNJpjclEgaTgYxA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzM5Lzk3/LzU3LzM5OTc1N2Jj/NGNjYjI0OGJiY2Ux/ODQyMGZjZDQxOWE2/LmpwZw"
+                        alt="Sunflower" />
+                    <div class="card-content">
+                        <h2>Sunflower (Helianthus annuus)</h2>
+                        <p>Known for their large, yellow blooms, sunflowers are tall plants that follow the
+                            sun
+                            throughout
+                            the
+                            day. They make excellent cut flowers and attract pollinators.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Plant seeds in well-drained, fertile soil.</li>
+                                <li>Needs full sunlight (at least 6 hours of direct sunlight).</li>
+                                <li>Water deeply but infrequently.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card4">
+                    <img src="https://imgs.search.brave.com/4LcnGRrS0MMM0RUIK2AoomDfBtqpuq125l8rYHJIpwU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YnVycGVlLmNvbS9t/ZWRpYS9jYXRhbG9n/L3Byb2R1Y3QvcC9y/L3Byb2QxMDAwMzFf/bWFpbi5qcGc_d2lk/dGg9MzIwJmhlaWdo/dD00Mjcmb3B0aW1p/emU9bWVkaXVtJmJn/LWNvbG9yPTI1NSwy/NTUsMjU1JmZpdD1i/b3VuZHM"
+                        alt="Marigold" />
+                    <div class="card-content">
+                        <h2>Marigold (Tagetes)</h2>
+                        <p>Marigolds are easy-to-grow flowers that come in shades of yellow, orange, and
+                            red.
+                            They
+                            are known
+                            for
+                            their pest-repelling properties and long blooming period.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Thrives in full sunlight.</li>
+                                <li>Water regularly but ensure good drainage.</li>
+                                <li>Remove dead flowers to encourage new blooms.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card5">
+                    <img src="https://imgs.search.brave.com/lSPQJu6z8NyForIG87I3LlL0IMLyAPxq6w45ZlUZpaM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/Y2FuLWktc2F2ZS10/aGlzLWdyb2Nlcnkt/c3RvcmUtZGFpc3kt/cGxhbnQtbW9yZS1p/bmZvLWJlbmVhdGgt/djAtcHZheXMzbXJ5/OW9iMS5qcGc_d2lk/dGg9NjQwJmNyb3A9/c21hcnQmYXV0bz13/ZWJwJnM9NmZkNzYw/MzgzM2ZhNGUxN2Iw/NjdhYjgwYTk0YTQx/OWNkOTNhMzhjMw"
+                        alt="Daisy" />
+                    <div class="card-content">
+                        <h2>Daisy (Bellis perennis)</h2>
+                        <p>Daisies are simple yet elegant flowers known for their white petals and yellow
+                            centers.
+                            They are popular in gardens due
+                            to their cheerful appearance and easy care. Daisies can thrive in various garden
+                            settings and are often used for borders
+                            or as ground cover.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Prefers full sun but can tolerate partial shade.</li>
+                                <li>Well-drained, moderately fertile soil is ideal.</li>
+                                <li>Water regularly, but allow the soil to dry out between waterings.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-id="card6">
+                    <img src="https://imgs.search.brave.com/LDizuA5cNTTi3YTz09NqRAnPqNC188STzm6eHylq7KI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bW9ucm92aWEuY29t/L21lZGlhL2FtYXN0/eS9ibG9nLzYwMHg4/NDBfNzQyM19MYXZh/bmR1bGFfaW50ZXJt/ZWRpYV9SaXZlcmlu/YV9UaG9tYXNfXzI0/OTdjcm9wTU5DX2Nv/cHkuanBn"
+                        alt="Lavender" />
+                    <div class="card-content">
+                        <h2>Lavender (Lavandula)</h2>
+                        <p>Lavender is a fragrant perennial flower that produces purple, blue, or pink
+                            blooms.
+                            It is
+                            perfect
+                            for
+                            creating a calming atmosphere in your garden and attracts bees and butterflies.
+                        </p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Requires full sun.</li>
+                                <li>Well-drained soil is essential.</li>
+                                <li>Prune after flowering to maintain shape and encourage new growth.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card7">
+                    <img src="https://imgs.search.brave.com/Vkw_BoUuNwwlvikiBQts4utgFiIbru-HyEK0S1In5E0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2Y2L2Ix/LzFiL2Y2YjExYjU0/M2I0MGEwMTlmNTRh/ODllNzNjMjlmNmNm/LmpwZw"
+                        alt="Daffodil" />
+                    <div class="card-content">
+                        <h2>Daffodil (Narcissus)</h2>
+                        <p>Daffodils are cheerful spring flowers that bloom in shades of yellow, white, and
+                            orange.
+                            They are
+                            known for
+                            their trumpet-like shape and are often seen as a symbol of renewal.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Plant bulbs in the fall.</li>
+                                <li>Requires well-drained, slightly acidic soil.</li>
+                                <li>Water after planting and during the growing season.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card8">
+                    <img src="https://imgs.search.brave.com/IM6TBh6jkpoqiqJlLLHN34VLFffvhv0PkhJ6FkxmrI4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YnVycGVlLmNvbS9t/ZWRpYS9jYXRhbG9n/L3Byb2R1Y3QvcC9y/L3Byb2QwMDE1OTRf/YWx0MS5qcGc_d2lk/dGg9MzIwJmhlaWdo/dD00Mjcmb3B0aW1p/emU9bWVkaXVtJmJn/LWNvbG9yPTI1NSwy/NTUsMjU1JmZpdD1i/b3VuZHM"
+                        alt="Lily" />
+                    <div class="card-content">
+                        <h2>Lily (Lilium)</h2>
+                        <p>Lilies are large, fragrant flowers that come in many varieties, including
+                            oriental,
+                            trumpet, and
+                            Asiatic
+                            lilies. They are often used in bouquets and have an elegant look.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Plant in a sunny location with well-drained soil.</li>
+                                <li>Water regularly, but ensure the soil is not soggy.</li>
+                                <li>Deadhead spent blooms to encourage new growth.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card9">
+                    <img src="https://imgs.search.brave.com/X_b7tLUh9Wu9zDIsQ_lLVD5oS5EoK0DAkGNRfPKI0ck/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2Y2LzE1/LzZkL2Y2MTU2ZGE3/NGJkZDkzZGMwOTlh/NDA4ODQxOTNlYzg5/LmpwZw"
+                        alt="Peony" />
+                    <div class="card-content">
+                        <h2>Peony (Paeonia)</h2>
+                        <p>Peonies are large, showy flowers that bloom in a variety of colors, including
+                            pink,
+                            red,
+                            and
+                            white.
+                            They are
+                            known for their lush, fragrant petals.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Requires well-drained, fertile soil.</li>
+                                <li>Full sunlight is ideal, but partial shade is acceptable in hotter
+                                    climates.
+                                </li>
+                                <li>Keep the soil consistently moist, especially during dry periods.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card10">
+                    <img src="https://imgs.search.brave.com/vgDu5ZCJXJV4vYHz4WNDHCHQOkqqa8wsYFAqExjwjLI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bWFydGhhc3Rld2Fy/dC5jb20vdGhtYi9E/SlVHYTBfY1hMVmot/NllEbmdHNTVsUTM5/NlU9LzE1MDB4MC9m/aWx0ZXJzOm5vX3Vw/c2NhbGUoKTptYXhf/Ynl0ZXMoMTUwMDAw/KTpzdHJpcF9pY2Mo/KS9wbGFudC1ncm93/LWNhcmUtemlubmlh/cy1sZWFkLWdldHR5/LTA2MjMtMTZjOWQ5/NGQwYTE2NDE4Nzgx/MDE5MTI1YzgxZWNj/NGYuanBn"
+                        alt="Zinnia" />
+                    <div class="card-content">
+                        <h2>Zinnia (Zinnia elegans)</h2>
+                        <p>Zinnias are bright, colorful flowers that bloom in shades of pink, red, orange,
+                            and
+                            yellow. They
+                            are
+                            heat-tolerant and thrive in full sun.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Plant in well-drained, loamy soil.</li>
+                                <li>Needs full sun and moderate watering.</li>
+                                <li>Remove dead flowers regularly to encourage new blooms.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card11">
+                    <img src="https://imgs.search.brave.com/99EBet3TvNQwaDDZvsNc66c297HKyKfQO71l-nES2AI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bW9ucm92aWEuY29t/L21lZGlhL2NhdGFs/b2cvcHJvZHVjdC9j/YWNoZS8yODIyMDBm/YTliOTRjNmIzYmI2/NDA4MzE0YzZhMmFh/Ny80LzUvNDU2NzVf/YmVnb25pYV9lbGF0/aW9yX2RyZWFtc19n/YXJkZW5fbWFjYXJv/c2VfMzQyNW1uYy53/ZWJw"
+                        alt="Begonia" />
+                    <div class="card-content">
+                        <h2>Begonia (Begonia semperflorens)</h2>
+                        <p>Begonias are known for their colorful blooms and ornamental foliage. They come in
+                            shades
+                            of red,
+                            pink, and
+                            white, and are perfect for shaded or partially shaded areas in the garden.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Prefers partial shade or full shade.</li>
+                                <li>Keep the soil moist but not soggy.</li>
+                                <li>Regularly remove dead leaves and flowers to promote new growth.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-id="card12">
+                    <img src="https://imgs.search.brave.com/pqUlCFEmwJ7GskDHvL6Lxx4jorqptvmDkcUiDReCpcA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YmhnLmNvbS90aG1i/L0ZsWnE2eGItNlEy/eVNILUFJNEtveUs4/VnNyMD0vMTI4MHgw/L2ZpbHRlcnM6bm9f/dXBzY2FsZSgpOnN0/cmlwX2ljYygpL3Jv/eWFsLWxhdmVuZGVy/LWl2eS1nZXJhbml1/bS0yM2NkOTUwZi0z/ZTU4OTM5NGY4YTM0/Y2VkOGFhM2JkMzA4/Y2E1YTA4OS5qcGc"
+                        alt="Geranium" />
+                    <div class="card-content">
+                        <h2>Geranium (Pelargonium)</h2>
+                        <p>Geraniums are known for their vibrant and colorful blooms that come in shades of
+                            red,
+                            pink,
+                            purple,
+                            and
+                            white. They are perfect for containers or hanging baskets.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Requires full sun.</li>
+                                <li>Water regularly, but ensure the soil is well-drained.</li>
+                                <li>Deadhead flowers to promote continuous blooming.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card13">
+                    <img src="https://imgs.search.brave.com/LDTr_2UBK9lZznlKBW0JMv8U4YnSZYa2WoTblkyf6rY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/amFja3NvbmFuZHBl/cmtpbnMuY29tL2lt/YWdlcy94bC8zNjk5/NS5qcGc_dj0wLTI"
+                        alt="Hydrangea" />
+                    <div class="card-content">
+                        <h2>Hydrangea (Hydrangea macrophylla)</h2>
+                        <p>Hydrangeas are large, showy flowers that come in a variety of colors including
+                            blue,
+                            pink, and
+                            white.
+                            They
+                            are perfect for adding a romantic touch to the garden.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Plant in partial shade to full sun.</li>
+                                <li>Requires well-drained soil that is rich in organic matter.</li>
+                                <li>Water regularly, especially during dry spells.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card14">
+                    <img src="https://imgs.search.brave.com/pb7AUf7jN5-HpvMRHDT9eeHdoRex9__-Yk1ANjYkY00/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z2FyZGVuaW5nZXhw/cmVzcy5jby51ay9t/ZWRpYS9jYXRhbG9n/L3Byb2R1Y3QvY2Fj/aGUvMzA0YjYyNDFj/M2MyOGQyZDJiN2Y3/MGNlZmI1Mzg2Yjcv/Yy9sL2NsZW1hdGlz/LWNhcnRtYW5paS1h/dmFsYW5jaGVfMTMz/NDlfMTI4MF8xMjgw/XzJfMV8zLmpwZw"
+                        alt="Clematis" />
+                    <div class="card-content">
+                        <h2>Clematis (Clematis)</h2>
+                        <p>Clematis are climbing plants that produce large, stunning flowers in a variety of
+                            colors,
+                            including
+                            purple,
+                            pink, red, and white. They are perfect for trellises or fences.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Requires full sun but prefers the roots to be shaded.</li>
+                                <li>Provide a trellis or structure to support the vines.</li>
+                                <li>Prune after flowering to maintain shape.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card15">
+                    <img src="https://imgs.search.brave.com/ZV1jmjrg_2iAKIElbz6wMmjntEX3khwK8K03sQCQdqM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuYW1lcmljYW5t/ZWFkb3dzLmNvbS9t/ZWRpYS9jYXRhbG9n/L3Byb2R1Y3QvYy9v/L2Nvc21vcy1taXhl/ZC0yLmpwZz9xdWFs/aXR5PTg1JmZpdD1i/b3VuZHMmaGVpZ2h0/PSZ3aWR0aD0zODQw/JmF1dG89d2VicCZm/b3JtYXQ9cGpwZw"
+                        alt="Cosmos" />
+                    <div class="card-content">
+                        <h2>Cosmos (Cosmos bipinnatus)</h2>
+                        <p>Cosmos are tall, elegant flowers that bloom in a variety of colors including
+                            pink,
+                            white,
+                            red,
+                            and
+                            purple.
+                            They are known for attracting butterflies.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Plant in full sun and well-drained soil.</li>
+                                <li>Water when the soil feels dry.</li>
+                                <li>Deadhead regularly to encourage more blooms.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card16">
+                    <img src="https://imgs.search.brave.com/LIW1JvbN8hb2QnDDkzE87n6A316sJ1_38qUSa6nFl8M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zaG9w/eWV3ZGVsbC5jb20v/Y2RuL3Nob3AvZmls/ZXMvSGFyZHlHYXJk/ZW5NdW1fTGF0dGVD/b3BwZXIuanBnP3Y9/MTczODcyODkwNiZ3/aWR0aD17d2lkdGh9"
+                        alt="Chrysanthemum" />
+                    <div class="card-content">
+                        <h2>Chrysanthemum (Chrysanthemum morifolium)</h2>
+                        <p>Chrysanthemums, often called mums, come in a variety of colors and bloom in late
+                            summer
+                            to fall.
+                            They
+                            are
+                            known for their ruffled petals and are commonly used in autumn gardens.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Needs full sun for optimal blooming.</li>
+                                <li>Water consistently, but avoid overwatering.</li>
+                                <li>Prune after blooming to encourage new growth.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-id="card17">
+                    <img src="https://imgs.search.brave.com/6ooQDUyXYRZIo_8qBvozS4ELjHltgZPWCiVLDsgBk9Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zaGlw/bGFwYW5kc2hlbGxz/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAyMy8wNS9mbG94/Z2xvdmVzLWluLXRo/ZS1wYXRpby1hcmVh/LVNRLTEyMDAtODIx/eDEwMjQuanBn"
+                        alt="Foxglove" />
+                    <div class="card-content">
+                        <h2>Foxglove (Digitalis purpurea)</h2>
+                        <p>Foxgloves are tall, spiky flowers that bloom in shades of purple, pink, white,
+                            and
+                            yellow. They
+                            are
+                            excellent
+                            for adding vertical interest to your garden.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Requires full sun to partial shade.</li>
+                                <li>Needs well-drained, slightly acidic soil.</li>
+                                <li>Keep soil consistently moist during the growing season.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card18">
+                    <img src="https://imgs.search.brave.com/9fj-lcqEQCHKG0R7QkSEj9kBoNbAumjs7IyuZQMoxQo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/d2hpdGVmbG93ZXJm/YXJtLmNvbS9tYXNf/YXNzZXRzL2NhY2hl/L2ltYWdlLzcvOS82/L2YvMzEwODcuSnBn"
+                        alt="Aster" />
+                    <div class="card-content">
+                        <h2>Aster (Aster amellus)</h2>
+                        <p>Asters are late-blooming flowers that come in shades of purple, pink, and white.
+                            They
+                            add
+                            color
+                            to
+                            the garden
+                            in the fall, making them great for extending the growing season.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Plant in full sun or partial shade.</li>
+                                <li>Requires well-drained soil.</li>
+                                <li>Water regularly, especially during dry spells.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card19">
+                    <img src="https://imgs.search.brave.com/NxxfTQ1etxYs0cER3i9JzzMZF6FhuyClEK-zCTQO-7M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bW9zLmNtcy5mdXR1/cmVjZG4ubmV0LzY0/NlBFd0d0U2liZTg5/OXJSUjh4aGstMzIw/LTgwLmpwZw"
+                        alt="Salvia" />
+                    <div class="card-content">
+                        <h2>Salvia (Salvia officinalis)</h2>
+                        <p>Salvias are perennial plants with spikes of colorful flowers in shades of purple,
+                            red,
+                            and blue.
+                            They
+                            are
+                            popular for their aromatic leaves and ability to attract pollinators.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Needs full sun and well-drained soil.</li>
+                                <li>Water deeply, but allow the soil to dry between watering.</li>
+                                <li>Prune to maintain shape and promote new growth.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card20">
+                    <img src="https://imgs.search.brave.com/B-mMlu2I9NcAuj7N2raBNAWlwYupwfS3Rd9T6gklESU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM5/MDcwNTcyMy9waG90/by9wYW5zeS1mbG93/ZXJzLW1peC5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9aTRZ/SEdkQ0lwTk9OOU5S/c3AwZlRFY0FyRDM5/aElCTV9iWGNxbzZ6/MGhPRT0"
+                        alt="Pansy" />
+                    <div class="card-content">
+                        <h2>Pansy (Viola tricolor var. hortensis)</h2>
+                        <p>Pansies are colorful, cool-season flowers that come in various shades including
+                            purple,
+                            yellow,
+                            orange, and
+                            blue. They have large, delicate petals with a distinctive face-like appearance.
+                        </p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Prefers cool weather and partial sun.</li>
+                                <li>Water consistently, but avoid waterlogging.</li>
+                                <li>Deadhead regularly to promote continuous blooms.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card21">
+                    <img src="https://imgs.search.brave.com/ZBByS2F5U3YCQUR0J-Rbpb1alZ1Ac6ICsHgo31gl4lg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMx/MDAxNTUyOS9waG90/by9zd2VldC1wZWEt/Zmxvd2Vycy1jaGF1/dGF1cXVhLXBhcmst/Ym91bGRlci1jb2xv/cmFkby5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9cTRQeEx2/eFJQVjlUWFpGR2dy/d0ttYkhjMlNydnkx/a21HNXFrYkhaVGI4/ND0"
+                        alt="Sweet Pea" />
+                    <div class="card-content">
+                        <h2>Sweet Pea (Lathyrus odoratus)</h2>
+                        <p>Sweet peas are fragrant flowers that come in a variety of colors, such as pink,
+                            purple,
+                            and
+                            white.
+                            They are
+                            climbing plants, perfect for trellises, and their sweet fragrance is a garden
+                            favorite.
+                        </p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Needs full sun and well-drained soil.</li>
+                                <li>Water regularly but ensure the soil is not soggy.</li>
+                                <li>Remove spent blooms to encourage more flowers.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-id="card22">
+                    <img src="https://imgs.search.brave.com/7ueASTb4TP1iyZy3xio0TdoPwb6wyIp00E-wZiCNP7M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc3F1YXJlc3Bh/Y2UtY2RuLmNvbS9j/b250ZW50L3YxLzY3/MzNlZjI5Zjg2MTc5/M2JjYjU1NWNiZi8x/MjdlYjdhZC0xZjY3/LTQ4OGYtODczNS04/OWIxYTdkZjdjNzIv/RGFobGlhcy0wMDA4/OC5qcGc"
+                        alt="Dahlia" />
+                    <div class="card-content">
+                        <h2>Dahlia (Dahlia pinnata)</h2>
+                        <p>Dahlias are stunning flowers that come in a wide range of colors and forms,
+                            including
+                            pom-pom,
+                            cactus, and
+                            dinner-plate varieties. They are excellent for adding color to the garden.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Needs full sun and well-drained soil.</li>
+                                <li>Water regularly but ensure good drainage.</li>
+                                <li>Protect tubers in winter if growing in cooler climates.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card23">
+                    <img src="https://imgs.search.brave.com/ukjIBB3YfTB---hwta8VeOLUVYM_Oxk1nFjh6WBDpZ4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YmhnLmNvbS90aG1i/L3AzUjVaOG5VOVhW/QTZLbU5HLS1IUFFJ/S3hJST0vMTI0NXgw/L2ZpbHRlcnM6bm9f/dXBzY2FsZSgpOnN0/cmlwX2ljYygpL2lt/cGF0aWVucy14dHJl/bWUtcm9zZS0zNTAy/NGRmMy1kYTNjNzY0/OGE4YWY0NGE2OTRj/ZTlkZDE3MmQ3MmVi/Zi5qcGc"
+                        alt="Impatiens" />
+                    <div class="card-content">
+                        <h2>Impatiens (Impatiens walleriana)</h2>
+                        <p>Impatiens are shade-loving flowers that come in a variety of colors, including
+                            pink,
+                            red,
+                            purple,
+                            and
+                            white.
+                            They are perfect for adding color to shady garden spots.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Prefers partial to full shade.</li>
+                                <li>Keep soil consistently moist.</li>
+                                <li>Avoid overwatering to prevent root rot.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card24">
+                    <img src="https://imgs.search.brave.com/rcO8uTFfyHFPY35AANVqg1rAVPvec_Sb58ri82kYOTM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9l/L2U2L1BpbmtfU25h/cGRyYWdvbl9GbG93/ZXItQW50aXJyaGlu/dW1fbWFqdXNfMDIu/anBn"
+                        alt="Snapdragon" />
+                    <div class="card-content">
+                        <h2>Snapdragon (Antirrhinum majus)</h2>
+                        <p>Snapdragons are tall plants that produce colorful blooms resembling dragon faces.
+                            They
+                            come in a
+                            variety of
+                            colors including pink, red, white, yellow, and purple.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Needs full sun and well-drained soil.</li>
+                                <li>Water when the soil feels dry.</li>
+                                <li>Deadhead regularly to encourage new blooms.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card25">
+                    <img src="https://imgs.search.brave.com/i0PEXYZKlM2-Kv1PaFf8FrkiHCIiFTQX7zAMe5yinUU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuaW1tZWRpYXRl/LmNvLnVrL3Byb2R1/Y3Rpb24vdm9sYXRp/bGUvc2l0ZXMvMTAv/MjAyMS8wNy8yMDQ4/eDEzNjUtTG9iZWxp/YS1TRU8tTEkyMzU3/ODgwLWE4NmE3ZDIu/anBnP3F1YWxpdHk9/OTAmZml0PTcwMCw0/NjY"
+                        alt="Lobelia" />
+                    <div class="card-content">
+                        <h2>Lobelia (Lobelia erinus)</h2>
+                        <p>Lobelias are trailing plants with bright blue, purple, or white flowers. They are
+                            perfect
+                            for
+                            hanging
+                            baskets
+                            or as ground cover in your garden.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Prefers partial to full sun.</li>
+                                <li>Keep the soil moist, but well-drained.</li>
+                                <li>Regularly prune to encourage bushier growth.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-id="card26">
+                    <img src="https://imgs.search.brave.com/9wlkPeZlBfm6X0E1RRc4OcoTkTMGcnzMeWXn5esEfL8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzA4/NjQvNjgzOS81MzIz/L2ZpbGVzL3RvcF9M/X2ltZzFfODQyMjAu/d2VicD92PTE3MjM2/NDA1MDY"
+                        alt="Calla Lily" />
+                    <div class="card-content">
+                        <h2>Calla Lily (Zantedeschia spp.)</h2>
+                        <p>Calla lilies are elegant flowers with a unique funnel-shaped bloom that comes in
+                            various
+                            colors,
+                            including
+                            white, yellow, and pink.</p>
+                        <div class="care-tips">
+                            <h3>Care Tips:</h3>
+                            <ul>
+                                <li>Requires well-drained, rich soil.</li>
+                                <li>Needs full sun to partial shade.</li>
+                                <li>Water consistently and keep the soil moist but not soggy.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!--Kitchen Plant Section-->
+    <div id="kitchen-plants-section" class="plant-section" style="display: none;">
+        <h1 style="color: white; font-size: 3em; margin-bottom: 30px; margin-top: 60px; text-align: center;">Kitchen
+            Plants</h1>
+        <div class="card-wrapper">
+            <div class="card" data-id="card27">
+                <img src="https://imgs.search.brave.com/aF_d0FTatA67dbncMISnq9H8NJShPk-HUXyOVkRJGhM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvOTgw/MjYwMDMvcGhvdG8v/dG9tYXRvZXMuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPWQ1/d0V4YXhqNjhQU1ZO/ZVdobzNLRjlQUk9x/MVQwdjBXaEZFdjRX/Vnl5S3c9"
+                    alt="Tomato" />
+                <div class="card-content">
+                    <h2>Tomato (Solanum lycopersicum)</h2>
+                    <p>Tomatoes are vibrant, juicy fruits commonly grown in gardens for salads, sauces, and cooking,
+                        offering both flavor and
+                        nutrition.</p>
+                    <div class="care-tips">
+                        <h3>Care Tips:</h3>
+                        <ul>
+                            <li>Plant in full sun with rich, well-drained soil.</li>
+                            <li>Stake or cage plants to support heavy fruit.</li>
+                            <li>Water deeply and consistently to avoid splitting.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-id="card28">
+                <img src="https://imgs.search.brave.com/Y-n77btLR6-KniWlrKQk2qEdlpBC6J7ldCCkAfd2lYI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvOTM5/Nzc1ODgyL3Bob3Rv/L3JlZC1zd2VldC1w/ZXBwZXIuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPWtEWFFU/XzFyalY2WGJQRUxw/YUZMN2VodHB0YW1G/Ti1jdDlsQUVOS3RV/d2c9"
+                    alt="Bell Pepper" />
+                <div class="card-content">
+                    <h2>Bell Pepper (Capsicum annuum)</h2>
+                    <p>Bell peppers are colorful, sweet fruits that add crunch and flavor to dishes, available in
+                        green, red, yellow, and
+                        orange varieties.</p>
+                    <div class="care-tips">
+                        <h3>Care Tips:</h3>
+                        <ul>
+                            <li>Require warm, well-drained soil and full sunlight.</li>
+                            <li>Water evenly to maintain soil moisture.</li>
+                            <li>Support plants if fruits become heavy.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-id="card29">
+                <img src="https://imgs.search.brave.com/Ks23uX_UQ29jqcake_g2aypiSlAuBgMGSX_uRd-ksEY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzcxLzc3/LzE2LzcxNzcxNjg5/OTdhNmE1MjBjNGZk/YTE1NGZmNWRkMjUw/LmpwZw"
+                    alt="Peach" />
+                <div class="card-content">
+                    <h2>Peach (Prunus persica)</h2>
+                    <p>Peach trees produce sweet, juicy fruits that are enjoyed fresh or in desserts.</p>
+                    <div class="care-tips">
+                        <h3>Care Tips:</h3>
+                        <ul>
+                            <li>Plant in full sun with well-drained soil.</li>
+                            <li>Prune annually to maintain shape and health.</li>
+                            <li>Protect from frost during blooming.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-id="card30">
+                <img src="https://imgs.search.brave.com/lNRhr_77lCQg4OusL5fblfZdNmmLMzx-epvBa7NHijk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9wb3R0ZWQtcGxh/bnQtd2l0aC1zdHJh/d2JlcnJpZXMtZ3Jv/d2luZy1vdXQtdG9w/LWl0Xzk0NjU4NS00/NTgyLmpwZz9zZW10/PWFpc19oeWJyaWQ"
+                    alt="Strawberry" />
+                <div class="card-content">
+                    <h2>Strawberry (Fragaria × ananassa)</h2>
+                    <p>Strawberries are sweet, fragrant berries ideal for gardens and containers, producing bright
+                        red fruits throughout the
+                        growing season.</p>
+                    <div class="care-tips">
+                        <h3>Care Tips:</h3>
+                        <ul>
+                            <li>Plant in full sun with slightly acidic, well-drained soil.</li>
+                            <li>Mulch to retain moisture and prevent weeds.</li>
+                            <li>Water regularly and remove runners to encourage fruiting.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-wrapper">
+            <div class="card" data-id="card31">
+                <img src="https://imgs.search.brave.com/KuXCleAQVIohGLdruckkMIXBvvPF8OdEnG9ilHI7Qio/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy85/Lzk2L0FSU19jdWN1/bWJlci5qcGc"
+                    alt="Cucumber" />
+                <div class="card-content">
+                    <h2>Cucumber (Cucumis sativus)</h2>
+                    <p>Cucumbers are fast-growing vines producing crisp, refreshing fruits, perfect for summer
+                        salads and pickling.
+                    </p>
+                    <div class="care-tips">
+                        <h3>Care Tips:</h3>
+                        <ul>
+                            <li>Grow in full sun with fertile, loose soil.</li>
+                            <li>Train vines onto a trellis for better air circulation.</li>
+                            <li>Keep soil consistently moist to prevent bitterness.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-id="card32">
+                <img src="https://imgs.search.brave.com/TIMXJcr5KMD1E8WTI_mPDdsAHKWoiBx4VflhL0xJoNM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTA5/NTI4Njg2OC9waG90/by9sZW1vbi10cmVl/LWluLWZsb3dlci1w/b3QuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPW9VYkZPVkVv/QUlycVItM1JpeGhr/VDdJbTdlSWItZ1M1/M0R2SFVQOTJpQTQ9"
+                    alt="Lemon (Citrus limon - Dwarf Varieties)" />
+                <div class="card-content">
+                    <h2>Lemon (Citrus limon - Dwarf Varieties)</h2>
+                    <p>Dwarf lemon trees produce fragrant blossoms and tangy fruits, making them perfect for small
+                        gardens or container
+                        growing.</p>
+                    <div class="care-tips">
+                        <h3>Care Tips:</h3>
+                        <ul>
+                            <li>Plant in full sun with well-draining, slightly acidic soil.</li>
+                            <li>Fertilize monthly during growing season.</li>
+                            <li>Water deeply but allow soil to dry slightly between waterings.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-id="card33">
+                <img src="https://imgs.search.brave.com/n2zzEee1HXQYZbvBz9CvZwZDEPmn6Ajo40AD_xNRh8Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTMz/OTA3ODIyOS9waG90/by9mcmVzaC1jYXJy/b3QuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPWkxWnVTRXZp/UW9oQlhtLTR5czZU/dzZSVVRJY0xXcnhq/SkxxNkpodkpoSGM9"
+                    alt="Carrot" />
+                <div class="card-content">
+                    <h2>Carrot (Daucus carota)</h2>
+                    <p>Carrots are root vegetables known for their sweet flavor and crunchy texture.</p>
+                    <div class="care-tips">
+                        <h3>Care Tips:</h3>
+                        <ul>
+                            <li>Requires loose, sandy soil for root development.</li>
+                            <li>Needs full sun and consistent moisture.</li>
+                            <li>Thin seedlings to avoid overcrowding.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-id="card34">
+                <img src="https://imgs.search.brave.com/Mgc79Z4KE8CbjUyK1WzmnNH3yitoW6GrlUQB6eqAkQw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNzM3/MTAwNDUvcGhvdG8v/amFwYW5lc2UtcmFk/aXNoLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1qRlpscS0w/Q1VJX0JNWXNBLTNZ/d1AtYjJubjRxemdW/RGw4d2lydUhvdzBF/PQ"
+                    alt="Radish" />
+                <div class="card-content">
+                    <h2>Radish (Raphanus sativus)</h2>
+                    <p>Radishes are fast-growing, peppery root vegetables ideal for quick harvests in cool seasons.
+                    </p>
+                    <div class="care-tips">
+                        <h3>Care Tips:</h3>
+                        <ul>
+                            <li>Sow seeds directly into well-prepared soil in full sun.</li>
+                            <li>Keep soil evenly moist for tender roots.</li>
+                            <li>Harvest promptly to avoid woody texture.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-id="card35">
+                <img src="https://imgs.search.brave.com/4DUVC_D_L_dExqU0gVtdjc06RFHmyTq9M2wa2YZxIPA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9leHRl/bnNpb24ucHN1LmVk/dS9tZWRpYS93eXNp/d3lnLy9leHRlbnNp/b25zL2NhdGFsb2df/cHJvZHVjdC85NmJj/YTE4MTdlM2Y0ZGEy/OWQ4N2JlM2NjNjNk/OTYzNC9wL2UvcGVh/c3RyZWxsaXNlZDIt/anAuanBn"
+                    alt="Peas" />
+                <div class="card-content">
+                    <h2>Peas (Pisum sativum)</h2>
+                    <p>Peas are cool-season crops producing sweet, tender pods perfect for fresh eating or cooking.
+                    </p>
+                    <div class="care-tips">
+                        <h3>Care Tips:</h3>
+                        <ul>
+                            <li>Plant in early spring in fertile, well-drained soil.</li>
+                            <li>Provide trellises for climbing varieties.</li>
+                            <li>Water consistently to keep plants productive.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" data-id="card36">
+                <img src="https://imgs.search.brave.com/xisgrJCJ0GqLKBvI0oSbZq8md8zSmIOevNNdydcj7Ew/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTY5/OTgzNzkxL3Bob3Rv/L3NwaW5hY2guanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPTFM/OXFKTDNCVFl1ck85/N0h5RXhmRVNrS3lG/UkV6UjM1RVJlSEhs/aDlpYms9"
+                    alt="Spinach" />
+                <div class="card-content">
+                    <h2>Spinach (Spinacia oleracea)</h2>
+                    <p>Spinach is a nutritious leafy green that grows quickly in cool weather, ideal for salads and
+                        cooking.</p>
+                    <div class="care-tips">
+                        <h3>Care Tips:</h3>
+                        <ul>
+                            <li>Plant in early spring or fall in fertile, moist soil.</li>
+                            <li>Water regularly to prevent bolting.</li>
+                            <li>Harvest outer leaves first to prolong the season.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='garden_plant_script.js') }}"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

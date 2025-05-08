@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenGLOW - Plant Guide</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body style="overflow-y: hidden;">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='bg3.webp') }}");
+            background-color: rgba(0, 3, 0, 0.83);
+        }
+    </style>
+
+    <!-- Background Overlay -->
+    <div class="background-overlay"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="GreenGlow Logo" />
+            </a>
+
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('indoor_plants') }}">Indoor Plants</a></li>
+                <li><a href="{{ url_for('garden_plants') }}">Garden Plants</a></li>
+                <li><a href="{{ url_for('common_diseases') }}">Common Diseases</a></li>
+                <li><a href="{{ url_for('about_us') }}">Meet Us</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Upload Section and About Us -->
+    <section class="banner">
+        <div class="content-wrapper">
+            <!-- Upload Section -->
+            <div class="upload-section" id="upload-section">
+                <h1>Upload a Leaf Image</h1>
+                <div class="upload-container">
+                    <input type="file" id="file-upload" accept="image/*" required>
+                    <button class="detect-btn" onclick="predictDisease()">Detect Disease</button>
+                </div>
+                <p id="prediction-result" style="margin-top: 10px; font-weight: bold;"></p>
+
+            </div>
+
+            <!-- About Us Section -->
+            <div class="about-container" id="about-us-section">
+                <div class="about-title">About Us</div>
+                <div class="about-box">
+                    <div class="about-text">
+                        Welcome to GreenGLOW, your go-to platform for plant health! Our website uses advanced AI to
+                        predict leaf diseases and provide expert guidance for better plant growth. Simply upload a leaf
+                        image, and
+                        our system will diagnose potential issues while offering tailored care tips. Whether you're a
+                        home gardener
+                        or a professional grower, we help you keep your plants thriving with science-backed solutions.
+                        Along with that we offer free guide for all your plant care need.<br>Happy Gardening!!!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+
+</html>
