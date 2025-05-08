@@ -4,12 +4,16 @@ from werkzeug.utils import secure_filename
 import numpy as np
 from PIL import Image
 import tensorflow as tf
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
 # Load your trained model
-model = tf.keras.models.load_model('trained_model.keras')  # Ensure this path is correct
+model = tf.keras.models.load_model('trained_model.h5')  # Ensure this path is correct
+print("Model input shape:", model.input_shape)
 class_names = ['Apple___Apple_scab',
  'Apple___Black_rot',
  'Apple___Cedar_apple_rust',
@@ -86,15 +90,20 @@ def predict():
 
         try:
             # Preprocess image
-            image = Image.open(file_path).resize((224, 224))
+            image = Image.open(file_path)
+            image = image.convert('RGB')
+            image = image.resize((128, 128))
             image_array = np.expand_dims(np.array(image) / 255.0, axis=0)
 
             # Prediction
             prediction = model.predict(image_array)
+            print("Prediction array:", prediction)
             predicted_class = class_names[np.argmax(prediction)]
+            print("Predicted class:", predicted_class)
 
             return jsonify({'disease': predicted_class})
         except Exception as e:
+            print("Error during prediction:", e)
             return jsonify({'error': str(e)}), 500
 
     return jsonify({'error': 'Unexpected error'}), 500

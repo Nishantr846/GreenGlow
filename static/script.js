@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const data = await response.json();
-            alert("Predicted Disease: " + data.prediction);
+            alert("Predicted Disease: " + data.disease);
         } catch (error) {
             console.error(error);
             alert("Error during prediction.");
