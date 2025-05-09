@@ -67,9 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
 async function predictDisease() {
     const fileInput = document.getElementById('file-upload');
     const resultText = document.getElementById('prediction-result');
+    const careTipsText = document.getElementById('care-tips');
 
     if (!fileInput.files[0]) {
         resultText.textContent = "Please upload an image first.";
+        careTipsText.textContent = "";
         return;
     }
 
@@ -89,8 +91,10 @@ async function predictDisease() {
 
         const data = await response.json();
         resultText.textContent = "Predicted Disease: " + data.disease;
+        careTipsText.textContent = "Care Tips: " + (data.care_tips || "No care tips available.");
     } catch (error) {
         resultText.textContent = "Error: " + error.message;
+        careTipsText.textContent = "";
     }
 }
 

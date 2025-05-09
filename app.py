@@ -74,6 +74,47 @@ def common_diseases():
 def about_us():
     return render_template('about_us.html')
 
+care_tips = {
+    'Apple___Apple_scab': "Remove and destroy infected leaves. Apply fungicides during the growing season.",
+    'Apple___Black_rot': "Prune out dead branches and remove mummified fruit. Use appropriate fungicides.",
+    'Apple___Cedar_apple_rust': "Remove nearby cedar trees if possible. Apply fungicides during apple tree bloom.",
+    'Apple___healthy': "Maintain regular watering and fertilization. Monitor for pests and diseases.",
+    'Blueberry___healthy': "Ensure proper soil pH and mulch to retain moisture.",
+    'Cherry_(including_sour)___Powdery_mildew': "Prune to increase air circulation. Apply fungicides if needed.",
+    'Cherry_(including_sour)___healthy': "Water regularly and mulch to conserve moisture.",
+    'Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot': "Rotate crops and use resistant varieties. Apply fungicides if necessary.",
+    'Corn_(maize)___Common_rust_': "Plant resistant hybrids and apply fungicides if needed.",
+    'Corn_(maize)___Northern_Leaf_Blight': "Use resistant hybrids and practice crop rotation.",
+    'Corn_(maize)___healthy': "Maintain soil fertility and monitor for pests.",
+    'Grape___Black_rot': "Remove mummified fruit and prune infected canes. Apply fungicides.",
+    'Grape___Esca_(Black_Measles)': "Prune out infected wood and apply fungicides.",
+    'Grape___Leaf_blight_(Isariopsis_Leaf_Spot)': "Remove infected leaves and apply fungicides.",
+    'Grape___healthy': "Ensure proper irrigation and nutrient management.",
+    'Orange___Haunglongbing_(Citrus_greening)': "Remove infected trees and control psyllid vectors.",
+    'Peach___Bacterial_spot': "Use resistant varieties and apply copper sprays.",
+    'Peach___healthy': "Maintain good sanitation and proper fertilization.",
+    'Pepper,_bell___Bacterial_spot': "Remove infected plants and avoid overhead watering.",
+    'Pepper,_bell___healthy': "Provide consistent watering and fertilization.",
+    'Potato___Early_blight': "Remove and destroy infected plants. Apply fungicides early.",
+    'Potato___Late_blight': "Use resistant varieties and apply fungicides regularly.",
+    'Potato___healthy': "Rotate crops and maintain soil health.",
+    'Raspberry___healthy': "Prune properly and monitor for pests.",
+    'Soybean___healthy': "Ensure proper planting density and nutrient management.",
+    'Squash___Powdery_mildew': "Remove infected leaves and apply fungicides.",
+    'Strawberry___Leaf_scorch': "Remove infected leaves and avoid overhead irrigation.",
+    'Strawberry___healthy': "Maintain proper soil moisture and fertilization.",
+    'Tomato___Bacterial_spot': "Remove infected plants and avoid overhead watering.",
+    'Tomato___Early_blight': "Use resistant varieties and apply fungicides.",
+    'Tomato___Late_blight': "Apply fungicides and remove infected plants.",
+    'Tomato___Leaf_Mold': "Increase air circulation and apply fungicides.",
+    'Tomato___Septoria_leaf_spot': "Remove infected leaves and apply fungicides.",
+    'Tomato___Spider_mites Two-spotted_spider_mite': "Use miticides and encourage natural predators.",
+    'Tomato___Target_Spot': "Remove infected leaves and apply fungicides.",
+    'Tomato___Tomato_Yellow_Leaf_Curl_Virus': "Control whiteflies and remove infected plants.",
+    'Tomato___Tomato_mosaic_virus': "Use resistant varieties and sanitize tools.",
+    'Tomato___healthy': "Provide balanced fertilization and regular watering."
+}
+
 @app.route('/predict', methods=['POST'])
 def predict():
     if 'file' not in request.files:
@@ -101,7 +142,9 @@ def predict():
             predicted_class = class_names[np.argmax(prediction)]
             print("Predicted class:", predicted_class)
 
-            return jsonify({'disease': predicted_class})
+            tips = care_tips.get(predicted_class, "No care tips available for this disease.")
+
+            return jsonify({'disease': predicted_class, 'care_tips': tips})
         except Exception as e:
             print("Error during prediction:", e)
             return jsonify({'error': str(e)}), 500
