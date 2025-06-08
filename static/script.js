@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const data = await response.json();
-            alert("Predicted Disease: " + data.disease);
+            // alert("Predicted Disease: " + data.disease);
         } catch (error) {
             console.error(error);
             alert("Error during prediction.");
@@ -79,7 +79,7 @@ async function predictDisease() {
     formData.append('file', fileInput.files[0]);
 
     try {
-        const response = await fetch('http://localhost:5000/predict', {
+        const response = await fetch('http://localhost:7700/predict', {
             method: 'POST',
             body: formData
         });
@@ -90,7 +90,7 @@ async function predictDisease() {
         }
 
         const data = await response.json();
-        resultText.textContent = "Predicted Disease: " + data.disease;
+        resultText.innerHTML = `Predicted Disease: <strong>${data.disease}</strong><br>Status: <strong>${data.status}</strong><br>Cure: <strong>${data.cure}</strong>`;
         careTipsText.textContent = "Care Tips: " + (data.care_tips || "No care tips available.");
     } catch (error) {
         resultText.textContent = "Error: " + error.message;
